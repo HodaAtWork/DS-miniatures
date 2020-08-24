@@ -1,0 +1,119 @@
+---
+title: "Data Science Demo 'Diamonds Are Forever'"
+author: "Henk op den Akker"
+date: "14-7-2020"
+output:
+  word_document: default
+  pdf_document: default
+  html_document: default
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+Na een eerste kennismaking met R in een Codecademy training is dit mijn eerste presentatie van de mogelijkheden om via R uit een verzameling data interessante en nuttige informatie te destilleren. 
+
+Met een knipoog naar Bond's film Diamonds Are Forever koos ik voor een dataset met bijna 54000 diamanten.
+
+
+![Schematische weergave diamant](DDD/diamantTekening.jpg)
+
+```{r load_scripts, include=FALSE}
+source('DDD_import.R')
+```
+
+``` {r echo=FALSE}
+source('DDD_plotCaratPrice.R')
+```
+
+## Aanpak
+1. in RStudio RScripts gemaakt en vrijwel complete Codecademy lesstof inclusief gebruikte datasets geprogrammeerd.
+2. in RStudio een RScript gemaakt met operaties op een diamonds.csv dataset. Een aantal aspecten uit het geleerde hier toegepast. Waaronder enkele basis statistische berekeningen.
+    + variantie (steekproef) en standaard afwijking moet nog een keer
+3. een RMarkdown file aangemaakt met de bedoeling om relevante RScripts te laden. Dit lukte mij alleen met de import van de libraries en dataset. Dat de rest niet ging zal ongetwijfeld te maken hebben met beginners manco's .....
+4. na run van alle code gekozen voor rendering naar HTML.
+
+
+## Een scatter plot voorbeeld
+Deze scatter plot toont aan dat, volgens verwachting, bij een hogere karaatwaarde een hogere prijs hoort:
+``` {r echo = FALSE}
+ggplot(data=diamonds, aes(x=carat, y=price)) + 
+  geom_point(aes(color=clarity)) + labs(title="Diamonds Are Forever", subtitle="Karaat vs Prijs", x="Karaat", y="Prijs", color="Zuiverheid")
+```
+
+## Voorbeeld tabelpresentatie 
+``` {r echo = FALSE, message=FALSE}
+diamondsPerClarity <- diamonds %>% group_by(clarity) %>% summarize(count=n())
+knitr::kable(diamondsPerClarity, caption = "Aantal diamanten per zuiverheids categorie")
+```
+
+
+Idem maar in histogram (ggplot):
+
+```{r echo=FALSE}
+ggplot(diamonds, aes(x=clarity)) + geom_bar(aes(fill=clarity)) + labs(title="Diamonds Are Forever",subtitle="Diamanten", x="Zuiverheid", y="Aantal")
+```
+
+``` {r echo = FALSE, message=FALSE}
+pricey_diamonds_clarity <- diamonds %>% group_by(clarity) %>% summarize(max_price = max(price,na.rm = TRUE))
+knitr::kable(pricey_diamonds_clarity, caption = "Hoogste prijs per zuiverheids categorie")
+```
+
+```{r echo=FALSE, message=FALSE}
+average_price <- diamonds %>% group_by(clarity) %>% filter(cut == "Premium", carat > 1, carat < 2) %>% summarize(mean(price,na.rm=TRUE))
+knitr::kable(average_price, caption = "Gemiddelde prijs per zuiverheids categorie maar voor slijpsel Premium en karaatwaarde tussen 1 en 2")
+```
+
+Alleen eerste 20 records
+```{r echo=FALSE, message=FALSE}
+diff_from_mean <- diamonds %>% group_by(clarity) %>% mutate(prijsverschil_met_gemiddelde = price - mean(price, na.rm = TRUE))
+knitr::kable(diff_from_mean[1:20, ], caption = "Prijsverschil met gemiddelde prijs per zuiverheids categorie")
+```
+
+
+## Met enkele waardes uit beschrijvende statistiek
+Histogram diepte diamant met gemiddelde, mediaan en modus (ggplot):
+
+```{r echo=FALSE}
+ggplot(diamonds, aes(x=depth)) + geom_bar(aes(fill=depth)) + labs(title="Diamanten", x="Diepte", y="Aantal") +
+  geom_vline(aes(xintercept=mean(diamonds$depth),
+                 color="gemiddelde"), linetype="solid",
+             size=1) +
+  geom_vline(aes(xintercept=median(diamonds$depth),
+                 color="mediaan"), linetype="dashed",
+             size=1) +
+  geom_vline(aes(xintercept=Mode(diamonds$depth),
+                 color="modus"), linetype="dashed",
+             size=1) +
+  scale_color_manual(name = "statistiek", values = c(mediaan = "blue", gemiddelde = "red", modus = "yellow"))
+```
+
+
+Histogram prijs diamant met gemiddelde, mediaan en modus (met qplot):
+
+```{r echo=FALSE}
+qplot(diamonds$price,
+              geom='histogram',
+              binwidth = .1,  
+              main = 'Diamonds Are Forever', 
+              xlab = 'Prijs',
+              ylab = 'Aantal',
+              fill=I("blue"), 
+              col=I("black"), 
+              alpha=I(.2)) +
+  geom_vline(aes(xintercept=mean(diamonds$price),
+                 color="gemiddelde"), linetype="solid",
+             size=1) +
+  geom_vline(aes(xintercept=median(diamonds$price),
+                 color="mediaan"), linetype="dashed",
+             size=1) +
+  geom_vline(aes(xintercept=Mode(diamonds$price),
+                 color="modus"), linetype="dashed",
+             size=1) +
+  scale_color_manual(name = "statistiek", values = c(mediaan = "blue", gemiddelde = "red", modus = "yellow"))
+```
+
+
+```{r echo=FALSE, message=FALSE}
+diamondsCount <- filter(diamonds, between(diamonds$price, 0, 1000)) %>% summarise(count=n())
+knitr::kable(diamondsCount, caption = "Aantal diamanten geprijsd onder 1000,00 ")
+```
