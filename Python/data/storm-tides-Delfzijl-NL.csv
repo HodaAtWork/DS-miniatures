@@ -1,6 +1,6 @@
 date,m_above_NAP,warning_code,storm_name
-12-02-2020,3.47,Y,
-10-02-2020,3.34,Y,
+12-02-2020,3.47,Y,Ciara
+10-02-2020,3.34,Y,Ciara
 08-01-2019,3.78,Y,Kroojanusvloed
 04-01-2018,2.98,Y,mogelijk NIET opnemen
 29-10-2017,3.63,Y,
@@ -14,11 +14,12 @@ date,m_above_NAP,warning_code,storm_name
 01-03-2008,3.70,Y,
 09-11-2007,4.21,O,
 18-03-2007,3.78,Y,
-12-01-2007,3.78,Y,
+18-01-2007,3.22,Y,Marius (naam in D)
+12-01-2007,3.78,Y,Volkhold (naam in D)
 01-11-2006,4.83,R,Allerheiligenvloed
 09-02-2004,3.36,Y,
 21-12-2003,3.06,Y,
-28-10-2002,3.06,Y,
+28-10-2002,3.06,Y,Emssperrwerk in Gandersum (D) in gebruik => invloed DZ
 30-01-2000,3.83,O,
 03-12-1999,3.66,Y,
 05-02-1999,3.59,Y,tij-1
@@ -68,7 +69,7 @@ date,m_above_NAP,warning_code,storm_name
 13-02-1965,3.35,Y,
 03-12-1964,3.05,Y,
 17-02-1962,3.49,Y,
-16-02-1962,4.46,O,
+16-02-1962,4.46,O,Hamburg-storm
 21-03-1961,3.25,Y,
 10-01-1958,3.20,Y,bewakinsgpeil nu: 3.00
 23-12-1954,3.23,Y,
