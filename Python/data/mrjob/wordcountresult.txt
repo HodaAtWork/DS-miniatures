@@ -1,0 +1,14 @@
+""	5
+"am"	7
+"and"	2
+"do"	4
+"eggs"	2
+"green"	2
+"ham"	2
+"i"	10
+"like"	4
+"not"	3
+"sam"	7
+"that"	3
+"them"	1
+"you"	1
