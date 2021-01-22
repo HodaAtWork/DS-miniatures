@@ -1,2 +1,4 @@
 # Data Science Miniatures
-Examples of my efforts to gain Data Science knowledge and hands-on experience in using R and Python for DS purposes.
+Some examples of my efforts to gain Data Science knowledge. Topics included are web scraping, data cleanup and reshaping, exploratory data analysis, probability, linear regression, support vector machine and MapReduce. Coding is done mostly in Python, but there are examples written in R and Smalltalk (Pharo) too. You can find them in the respective folders.
+
+With regard to effective communication (story telling) yet to do is writing a presentation of *some* project. This [interactive visualisation](https://tabsoft.co/3qmluHV) shows some of the options in [Tableau](https://public.tableau.com/s/). Of course you could use [Power BI](https://powerbi.microsoft.com/en-us/) as well. This example is based on public Seattle building permits data and was derived from a Harvard CS109-2015 lecture.
