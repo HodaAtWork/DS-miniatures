@@ -1,4 +1,9 @@
 date,m_above_NAP,warning_code,storm_name
+19-02-2022,3.72,Y,Eunice 01:50 CET
+06-02-2022,3.11,Y,03:40 CET
+31-01-2022,2.96,Y,Corrie 23:10 CET (niet opnemen)
+30-01-2022,3.53,Y,Malik 08:30 CET 
+29-01-2022,3.30,Y,Malik 20:40 CET
 12-02-2020,3.47,Y,Ciara
 10-02-2020,3.34,Y,Ciara
 08-01-2019,3.78,Y,Kroojanusvloed
@@ -74,7 +79,7 @@ date,m_above_NAP,warning_code,storm_name
 10-01-1958,3.20,Y,bewakinsgpeil nu: 3.00
 23-12-1954,3.23,Y,
 22-12-1954,3.93,O,
-01-02-1953,3.27,Y,lager dan grenspeil van toen: 3.34
+01-02-1953,3.27,Y,watersnoodramp; DZ lager dan grenspeil van toen: 3.34
 04-12-1949,3.19,Y,
 04-02-1944,4.48,O,
 08-04-1943,3.53,Y,
@@ -94,6 +99,9 @@ date,m_above_NAP,warning_code,storm_name
 13-03-1906,4.51,O,
 07-01-1905,3.53,Y,
 30-12-1904,3.48,Y,
-28-01-1901,4.53,O,
+28-01-1901,4.53,O,4.91 gecorrigeerd voor zeespiegelstijging (RWS)
 02-01-1855,4.05,O,
 04-02-1825,4.60,O,
+25-12-1717,,,Kerstvloed, bron: Kronijk van Delfzijl; T.R. van Streun. Historische_stormvloedstanden_versie_2003.pdf
+13-11-1686,,,St.Maartensvloed, bron: Kronijk van Delfijl; T.R. van Streun
+15-08-1597,,,bron: Kronijk van Delfzijl; T.R. van Streun; Historische_stormvloedstanden_versie_2003.pdf (25-09-1597)
